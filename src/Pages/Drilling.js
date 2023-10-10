@@ -4,18 +4,26 @@ import '../App.css';
 import skeletonImage from '../images/skeleton.jpg'
 
 let context = React.createContext(null);
-function Drilling() {
+function Parent() {
   const fName = "This is an example of context";
   return (
     <context.Provider value={{ fName }}>
-        <Child />
+        <CardCollection />
     </context.Provider>
-
-
   );
 }
 
-function Child() {
+function CardCollection(){
+  const cards = [];
+
+  cards.push(<Card key = {1} />);
+  cards.push(<br/>);
+  cards.push(<Card key = {2} />);
+
+  return(<><div className = "Card-container"> {cards} </div> <div className = "Card-container"> {cards} </div></>);
+}
+
+function Card() {
   const { fName } = useContext(context);
   return(
     <div className = "Card">
@@ -25,4 +33,4 @@ function Child() {
   )
 }
 
-export default Drilling;
+export default Parent;

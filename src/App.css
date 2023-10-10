@@ -135,6 +135,8 @@ body {
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .card img {
@@ -148,5 +150,9 @@ body {
   background-color: #f1f1f1;
   height: 10%;
   text-align: left;
+}
+
+.Card-container {
+  display: flex;
 }
 

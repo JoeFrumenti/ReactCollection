@@ -6,7 +6,7 @@ import './App.css';
 import {Routes, Route} from 'react-router-dom';
 
 import Game from './Pages/TicTacToe';
-import Drilling from'./Pages/Drilling';
+import Parent from'./Pages/Drilling';
 import Home from './Pages/Home';
 
 function App() {
@@ -14,8 +14,8 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element = {<Home />} />
-        <Route path='Game' element = {<Game />} />
-        <Route path='Drilling' element = {<Drilling />} />
+        <Route path='/Game' element = {<Game />} />
+        <Route path='/Context' element = {<Parent />} />
       </Routes>
 
     </div>

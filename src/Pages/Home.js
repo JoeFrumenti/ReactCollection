@@ -11,7 +11,7 @@ function Home() {
       <Link to="Game">Tic Tac Toe</Link>
     </div>
     <div>
-      <Link to="/Drilling">Drilling </Link>
+      <Link to="Context">Context Demo</Link>
     </div>
    </div>
   );
