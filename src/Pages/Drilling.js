@@ -6,20 +6,31 @@ import sunImage from '../images/sun.jpg';
 
 let context = React.createContext(null);
 function Parent() {
-  const [fName, setfName] = useState(Array(6).fill(false));
+  const [cardThemes, setCardThemes] = useState(Array(6).fill(false));
 
 
-  function setAllCardsSkeleton()
-  {
-    let tempNames = Array(6).fill(true);
-    setfName(tempNames);
+  function setDarkMode(){
+  document.body.style = 'background: grey;';
+
+    let temp = Array(6).fill(true);
+    setCardThemes(temp);
+  }
+
+  function setLightMode(){
+  document.body.style = 'background: white;';
+
+    let temp = Array(6).fill(false);
+    setCardThemes(temp);
   }
 
 
   return (
-    <context.Provider value={{ fName }}>
-        <button onClick={setAllCardsSkeleton}>SKELETON</button>
-        <CardCollection />
+    <context.Provider value={{ cardThemes }}>
+
+      <button onClick={setLightMode}>LIGHT MODE</button>
+      <button onClick={setDarkMode}>DARK MODE</button>
+
+      <CardCollection />
     </context.Provider>
   );
 }
@@ -39,24 +50,35 @@ function CardCollection(){
 }
 
 function Card({index}) {
-  const { fName } = useContext(context);
+  const { cardThemes } = useContext(context);
   let text;
+  let image;
 
-  if(fName[index])
-    text = "TRUE";
-  else
-    text = "FALSE";
+  function switchProperties(){
+      let temp = Array(cardThemes.length);
+      for(let i =0; i < cardThemes.length;i++)
+      {
+        temp[i] = cardThemes[i];
+      }
+      temp[index] = !temp[index];
+
+    }
+
+  if(cardThemes[index]){
+    text = "AAAA SO SPOOKY";
+    image = skeletonImage;
+  }
+  else{
+    text = "What a beautiful baby!";
+    image = sunImage;
+  }
 
   return(
     <div className = "Card" onClick={switchProperties}>
-      <img src = {skeletonImage} alt = "skelly"/>
+      <img src = {image} alt = "skelly"/>
       {text}
     </div>
   )
-
-  function switchProperties(){
-    console.log("CLICKED");
-  }
 
 }
 
