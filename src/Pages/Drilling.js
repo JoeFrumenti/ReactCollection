@@ -61,6 +61,7 @@ function Card({index}) {
         temp[i] = cardThemes[i];
       }
       temp[index] = !temp[index];
+      setCardThemes(temp);
 
     }
 
