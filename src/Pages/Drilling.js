@@ -25,7 +25,7 @@ function Parent() {
 
 
   return (
-    <context.Provider value={{ cardThemes }}>
+    <context.Provider value={[cardThemes,setCardThemes]}>
 
       <button onClick={setLightMode}>LIGHT MODE</button>
       <button onClick={setDarkMode}>DARK MODE</button>
@@ -50,7 +50,7 @@ function CardCollection(){
 }
 
 function Card({index}) {
-  const { cardThemes } = useContext(context);
+  const [cardThemes, setCardThemes] = useContext(context);
   let text;
   let image;
 
