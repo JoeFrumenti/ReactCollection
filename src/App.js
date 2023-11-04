@@ -8,6 +8,7 @@ import {Routes, Route} from 'react-router-dom';
 import Game from './Pages/TicTacToe';
 import Parent from'./Pages/Drilling';
 import Home from './Pages/Home';
+import Spring from './Pages/Spring';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element = {<Home />} />
         <Route path='/Game' element = {<Game />} />
         <Route path='/Context' element = {<Parent />} />
+        <Route path='/Spring' element = {<Spring />} />
       </Routes>
 
     </div>

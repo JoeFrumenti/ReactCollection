@@ -1,3 +1,8 @@
+//This was my first project in React. The code isn't pretty,
+//as I had no idea how React worked when I started this.
+//I've decided to leave the code as is to show my progress as
+//I learn more aspects of React to make my code more concise
+
 import * as React from 'react';
 import { Component }  from 'react';
 import { useState, useEffect } from 'react';
@@ -78,8 +83,6 @@ export default function Game()
       console.log("RUNNING TOGGLEORDER");
     setOrderReversed(!orderReversed);
   }
-
-
 
 
   function jumpTo(nextMove, doReverse)

@@ -2,6 +2,9 @@ import * as React from 'react';
 import {Routes, Route, Link} from 'react-router-dom';
 
 function Home() {
+
+  document.body.style="body:white";
+
   return (
   <div>
     <div className="App">
@@ -12,6 +15,9 @@ function Home() {
     </div>
     <div>
       <Link to="Context">Context Demo</Link>
+    </div>
+    <div>
+      <Link to="Spring">Spring App</Link>
     </div>
    </div>
   );

@@ -5,6 +5,7 @@ import skeletonImage from '../images/skeleton.jpg';
 import sunImage from '../images/sun.jpg';
 
 let context = React.createContext(null);
+
 function Parent() {
   const [cardThemes, setCardThemes] = useState(Array(6).fill(false));
 
@@ -12,14 +13,14 @@ function Parent() {
   function setDarkMode(){
   document.body.style = 'background: grey;';
 
-    let temp = Array(6).fill(true);
+    let temp = Array(cardThemes.length).fill(true);
     setCardThemes(temp);
   }
 
   function setLightMode(){
   document.body.style = 'background: white;';
 
-    let temp = Array(6).fill(false);
+    let temp = Array(cardThemes.length).fill(false);
     setCardThemes(temp);
   }
 
@@ -62,7 +63,6 @@ function Card({index}) {
       }
       temp[index] = !temp[index];
       setCardThemes(temp);
-
     }
 
   if(cardThemes[index]){
@@ -80,7 +80,5 @@ function Card({index}) {
       {text}
     </div>
   )
-
 }
-
 export default Parent;
