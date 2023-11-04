@@ -3,7 +3,9 @@ import {Routes, Route, Link} from 'react-router-dom';
 
 function Spring() {
 
-  fetch('http://localhost:8080/')
+
+  const fetchData = () => {
+    fetch('http://localhost:8080/')
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -18,6 +20,11 @@ function Spring() {
       // Handle errors, such as network issues or server errors
       console.error('No fetch sry:', error);
     });
+  };
+
+  return(
+    <button onClick={fetchData}> Get </button>
+  )
 }
 
 export default Spring;
