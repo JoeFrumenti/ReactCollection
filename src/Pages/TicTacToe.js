@@ -4,8 +4,6 @@
 //I learn more aspects of React to make my code more concise
 
 import * as React from 'react';
-import { Component }  from 'react';
-import { useState, useEffect } from 'react';
 
 import '../App.css'
 

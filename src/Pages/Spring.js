@@ -1,6 +1,5 @@
 import * as React from 'react';
 import axios from 'axios';
-import {Routes, Route, Link} from 'react-router-dom';
 
 const path = 'http://localhost:8080/';
 
@@ -8,7 +7,7 @@ const path = 'http://localhost:8080/';
 function Spring() {
 
   const deleteUser = () => {
-    axios.delete(path + 'user/Mariam')
+    axios.delete(path + 'user/mariam')
     .then((response) => {
         if(response.status === 200){
           console.log(response.data);
@@ -23,7 +22,12 @@ function Spring() {
 
 
   const addUser = () => {
-    axios.post(path + 'user').then((response) => {
+    const mariam = {
+                     username: 'mariam',
+                     password: 'IloveAlex',
+                   };
+
+    axios.post(path + 'user', mariam).then((response) => {
        if(response.status === 200){
          console.log(response.data);
        }
