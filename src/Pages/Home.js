@@ -8,7 +8,7 @@ function Home() {
   return (
   <div>
     <div className="App">
-      This is the Home page
+      Choose a project:
     </div>
     <div>
       <Link to="Game">Tic Tac Toe</Link>

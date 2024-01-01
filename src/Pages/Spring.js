@@ -1,10 +1,21 @@
 import * as React from 'react';
+import MaskedInput from 'react-text-mask';
 import axios from 'axios';
+
+import {useState} from 'react';
+
 
 const path = 'http://localhost:8080/';
 
 
 function Spring() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const [userData, setUserData] = useState({
+    username: null,
+    password: null,
+  })
 
   const deleteUser = () => {
     axios.delete(path + 'user/mariam')
@@ -32,7 +43,7 @@ function Spring() {
          console.log(response.data);
        }
        else
-         console.error("Nah");
+         console.log("error: User already exists");
        })
      .catch((error) => {
        console.error("Add error:", error);
@@ -76,12 +87,79 @@ function Spring() {
       });
     };
 
+  const updateUsername = event => {
+    setUsername(event.target.value);
+  };
+
+  const updatePassword = event => {
+      setPassword(event.target.value);
+  };
+
+  const login = async () => {
+    const params = {
+      param1: username,
+      param2: password,
+    };
+
+
+    const url = new URL(path + 'user/login');
+    url.search =  new URLSearchParams(params).toString();
+    console.log(url.href);
+
+    try {
+      const response = await fetch(url.href);
+      const data = await response;
+      console.log(data);
+      if(data.status == 200)
+      {
+        console.log("Login success!");
+        setUserData({
+          username: username,
+          password: password,
+        });
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+
+  };
+
+  const logout = () => {
+    setUserData({
+      username: null,
+      password: null,
+    });
+  }
+
   return(
     <>
+      Current login: {userData.username}
+      <br/>
       <button onClick={fetchData}> Get </button>
       <button onClick={getHello}> Hello </button>
       <button onClick={deleteUser}> Delete </button>
       <button onClick={addUser}> Post </button>
+      <br/>
+      <br/>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        onChange={updateUsername}
+        value={username}
+      />
+      <br/>
+      <input
+       // mask = {[]}
+        type="text"
+        id="password"
+        name="password"
+        onChange={updatePassword}
+        value={password}
+      />
+      <br/>
+      <button onClick={login}> Log In </button>
+      <button onClick={logout}> Log Out </button>
     </>
   )
 }
