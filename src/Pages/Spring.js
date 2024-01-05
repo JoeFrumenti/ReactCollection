@@ -9,8 +9,8 @@ const path = 'http://localhost:8080/';
 
 
 function Spring() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [usernameField, setUsernameField] = useState('');
+  const [passwordField, setPasswordField] = useState('');
 
   const [userData, setUserData] = useState({
     username: null,
@@ -88,17 +88,17 @@ function Spring() {
     };
 
   const updateUsername = event => {
-    setUsername(event.target.value);
+    setUsernameField(event.target.value);
   };
 
   const updatePassword = event => {
-      setPassword(event.target.value);
+      setPasswordField(event.target.value);
   };
 
   const login = async () => {
     const params = {
-      param1: username,
-      param2: password,
+      param1: usernameField,
+      param2: passwordField,
     };
 
 
@@ -114,8 +114,8 @@ function Spring() {
       {
         console.log("Login success!");
         setUserData({
-          username: username,
-          password: password,
+          username: usernameField,
+          password: passwordField,
         });
       }
     } catch (error) {
@@ -146,16 +146,15 @@ function Spring() {
         id="username"
         name="username"
         onChange={updateUsername}
-        value={username}
+        value={usernameField}
       />
       <br/>
       <input
-       // mask = {[]}
-        type="text"
+        type="password"
         id="password"
         name="password"
         onChange={updatePassword}
-        value={password}
+        value={passwordField}
       />
       <br/>
       <button onClick={login}> Log In </button>
